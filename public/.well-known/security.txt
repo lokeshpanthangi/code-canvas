@@ -1,0 +1,7 @@
+# https://www.robotstxt.org/robotstxt.html
+# Security contact file for responsible disclosure
+# https://securitytxt.org/
+
+Contact: mailto:security@codecanvas.dev
+Preferred-Languages: en
+Canonical: https://codecanvas.dev/.well-known/security.txt

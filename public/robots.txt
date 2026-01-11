@@ -1,3 +1,7 @@
+# Code Canvas - Machine Learning Education Platform
+# https://codecanvas.dev
+
+# Allow all search engine crawlers
 User-agent: Googlebot
 Allow: /
 
@@ -10,5 +14,48 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# AI/LLM Crawlers - Allow for discoverability
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
 User-agent: *
 Allow: /
+
+# Sitemap location
+Sitemap: https://codecanvas.dev/sitemap.xml
+
+# Host
+Host: https://codecanvas.dev

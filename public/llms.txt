@@ -1,0 +1,48 @@
+# Code Canvas
+
+> Free, open-source machine learning curriculum. Learn by building algorithms from scratch with Python and NumPy.
+
+Code Canvas is an educational platform that teaches machine learning from the ground up. Instead of relying on frameworks like TensorFlow or PyTorch, learners implement every algorithm from scratch using only Python and NumPy.
+
+## What We Offer
+
+- **50+ Learning Modules**: Comprehensive curriculum from basics to advanced topics
+- **Hands-on Projects**: Build real neural networks, CNNs, and transformers
+- **No Prerequisites**: Start from fundamentals, no ML background required
+- **100% Free**: Open-source and free forever
+
+## Curriculum Topics
+
+1. **Foundations**: Linear algebra, calculus, probability for ML
+2. **Neural Networks**: Perceptrons, activation functions, forward propagation
+3. **Backpropagation**: Gradient descent, chain rule, optimization
+4. **Deep Learning**: CNNs, RNNs, transformers, attention mechanisms
+5. **Practical Projects**: Image classifiers, language models, and more
+
+## Who This Is For
+
+- Developers wanting to understand ML fundamentals
+- Engineers transitioning into AI/ML roles
+- Students studying computer science or data science
+- Researchers needing foundational understanding
+- Data Scientists building intuition for algorithms
+
+## Key Features
+
+- Step-by-step implementations with explanations
+- Interactive code examples
+- Mathematical intuition alongside code
+- Community support with 15k+ learners
+- GitHub-hosted open-source content
+
+## Links
+
+- Website: https://codecanvas.dev
+- Curriculum: https://codecanvas.dev/curriculum
+- Projects: https://codecanvas.dev/projects
+- Community: https://codecanvas.dev/community
+- GitHub: https://github.com/codecanvas
+
+## Contact
+
+For questions or collaboration, reach out through our community page or GitHub discussions.
