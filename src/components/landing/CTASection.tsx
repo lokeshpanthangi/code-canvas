@@ -7,7 +7,7 @@ const CTASection = () => {
     <section className="py-32 relative">
       <div className="container mx-auto px-6 relative z-10">
         {/* Main CTA Card */}
-        <div className="relative rounded-[2.5rem] border border-border bg-card/50 hover:shadow-xl hover:shadow-foreground/5 transition-shadow">
+        <div className="relative rounded-[2.5rem] border border-border bg-card/50 shadow-xl shadow-foreground/5 hover:shadow-2xl hover:shadow-foreground/10 transition-shadow">
           <div className="relative p-10 lg:p-16">
             {/* Top row - Stats/Trust */}
             <div className="flex flex-wrap items-center gap-6 mb-12 pb-8 border-b border-border/30">
