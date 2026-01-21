@@ -11,6 +11,10 @@ import Projects from "./pages/Projects";
 import Community from "./pages/Community";
 import NeuralNetworkProject from "./pages/projects/NeuralNetworkProject";
 import ModelDeployment from "./pages/docs/ModelDeployment";
+import BatchDeploymentAWS from "./pages/docs/BatchDeploymentAWS";
+import BatchDeploymentGCP from "./pages/docs/BatchDeploymentGCP";
+import OnlineDeploymentAWS from "./pages/docs/OnlineDeploymentAWS";
+import OnlineDeploymentGCP from "./pages/docs/OnlineDeploymentGCP";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,6 +45,10 @@ const App = () => (
             <Route path="/community" element={<Community />} />
             <Route path="/projects/neural-network" element={<NeuralNetworkProject />} />
             <Route path="/docs/model-deployment" element={<ModelDeployment />} />
+            <Route path="/docs/batchdeployment/aws" element={<BatchDeploymentAWS />} />
+            <Route path="/docs/batchdeployment/gcp" element={<BatchDeploymentGCP />} />
+            <Route path="/docs/onlinedeployment/aws" element={<OnlineDeploymentAWS />} />
+            <Route path="/docs/onlinedeployment/gcp" element={<OnlineDeploymentGCP />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
