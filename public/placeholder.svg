@@ -31,6 +31,6 @@
   <line x1="630" y1="700" x2="870" y2="600" stroke="url(#grad)" stroke-width="2" opacity="0.2"/>
   <line x1="630" y1="700" x2="870" y2="800" stroke="url(#grad)" stroke-width="2" opacity="0.2"/>
   <line x1="630" y1="900" x2="870" y2="800" stroke="url(#grad)" stroke-width="2" opacity="0.2"/>
-  <!-- MLEdu text -->
-  <text x="600" y="1100" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill="url(#grad)" text-anchor="middle">MLEdu</text>
+  <!-- MLCodex text -->
+  <text x="600" y="1100" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill="url(#grad)" text-anchor="middle">MLCodex</text>
 </svg>

@@ -22,7 +22,7 @@ const testimonials = [
     role: "AI Researcher",
   },
   {
-    text: "Coming from web development, this was the perfect bridge into ML. The curriculum is structured brilliantly for self-learners.",
+    text: "Coming from web development, this was the perfect bridge into ML. The content is structured brilliantly for self-learners.",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
     name: "Marcus Johnson",
     role: "Full Stack Developer",
@@ -40,7 +40,7 @@ const testimonials = [
     role: "Software Engineer",
   },
   {
-    text: "Teaching ML concepts became easier after going through this curriculum. The projects are perfect for demonstrating core principles.",
+    text: "Teaching ML concepts became easier after going through these docs. The projects are perfect for demonstrating core principles.",
     image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop",
     name: "Lisa Anderson",
     role: "CS Professor",
@@ -52,7 +52,7 @@ const testimonials = [
     role: "Bootcamp Graduate",
   },
   {
-    text: "This open-source curriculum rivals paid courses. The depth of content and quality of implementation examples is outstanding.",
+    text: "This open-source resource rivals paid courses. The depth of content and quality of implementation examples is outstanding.",
     image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop",
     name: "Nina Okonkwo",
     role: "Research Engineer",

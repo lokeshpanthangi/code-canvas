@@ -1,7 +1,7 @@
 {
-  "name": "Code Canvas",
-  "short_name": "CodeCanvas",
-  "description": "Free, open-source machine learning curriculum. Learn by building algorithms from scratch with Python and NumPy.",
+  "name": "MLCodex",
+  "short_name": "MLCodex",
+  "description": "Free, open-source machine learning documentation. Learn by building algorithms from scratch with Python and NumPy.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",

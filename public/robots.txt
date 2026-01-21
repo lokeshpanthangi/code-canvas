@@ -1,5 +1,5 @@
-# Code Canvas - Machine Learning Education Platform
-# https://codecanvas.dev
+# MLCodex - Machine Learning Education Platform
+# https://MLCodex.dev
 
 # Allow all search engine crawlers
 User-agent: Googlebot
@@ -55,7 +55,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://codecanvas.dev/sitemap.xml
+Sitemap: https://MLCodex.dev/sitemap.xml
 
 # Host
-Host: https://codecanvas.dev
+Host: https://MLCodex.dev

@@ -14,7 +14,7 @@ const sections = [
   { id: 'projects', label: 'Projects', icon: Database, count: 1 },
 ];
 
-const CurriculumSidebar = ({ activeSection, onSectionChange }: SidebarProps) => {
+const DocsSidebar = ({ activeSection, onSectionChange }: SidebarProps) => {
   return (
     <aside className="w-72 shrink-0 border-r border-border/50 bg-background/50 backdrop-blur-sm sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto hidden lg:block">
       <div className="p-6 space-y-8">
@@ -95,4 +95,4 @@ const CurriculumSidebar = ({ activeSection, onSectionChange }: SidebarProps) => 
   );
 };
 
-export default CurriculumSidebar;
+export default DocsSidebar;

@@ -441,7 +441,7 @@ const Projects = () => {
               </p>
               <div className="flex items-center justify-center gap-4">
                 <Button variant="hero" size="lg" className="h-14 px-8">
-                  Explore Curriculum
+                  Explore Docs
                   <ArrowUpRight className="w-5 h-5" />
                 </Button>
                 <Button variant="outline" size="lg" className="h-14 px-8 border-foreground/20 hover:bg-foreground/5 hover:border-foreground/30 hover:text-foreground">

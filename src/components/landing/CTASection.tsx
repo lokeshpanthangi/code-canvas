@@ -59,9 +59,9 @@ const CTASection = () => {
                 </p>
 
                 <div className="flex flex-wrap gap-4">
-                  <Link to="/curriculum">
+                  <Link to="/docs">
                     <Button variant="hero" size="lg" className="h-14 px-8 text-base">
-                      Explore Curriculum
+                      Explore Docs
                       <ArrowRight className="w-5 h-5" />
                     </Button>
                   </Link>
@@ -95,7 +95,7 @@ const CTASection = () => {
 
                   <div className="mt-6 pt-6 border-t border-border/30 flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">Ready in 5 minutes</span>
-                    <Link to="/curriculum" className="text-sm font-medium text-foreground hover:underline underline-offset-4">
+                    <Link to="/docs" className="text-sm font-medium text-foreground hover:underline underline-offset-4">
                       Get Started →
                     </Link>
                   </div>

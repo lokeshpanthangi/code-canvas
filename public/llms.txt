@@ -1,17 +1,17 @@
-# Code Canvas
+# MLCodex
 
-> Free, open-source machine learning curriculum. Learn by building algorithms from scratch with Python and NumPy.
+> Free, open-source machine learning documentation. Learn by building algorithms from scratch with Python and NumPy.
 
-Code Canvas is an educational platform that teaches machine learning from the ground up. Instead of relying on frameworks like TensorFlow or PyTorch, learners implement every algorithm from scratch using only Python and NumPy.
+MLCodex is an educational platform that teaches machine learning from the ground up. Instead of relying on frameworks like TensorFlow or PyTorch, learners implement every algorithm from scratch using only Python and NumPy.
 
 ## What We Offer
 
-- **50+ Learning Modules**: Comprehensive curriculum from basics to advanced topics
+- **50+ Learning Modules**: Comprehensive docs from basics to advanced topics
 - **Hands-on Projects**: Build real neural networks, CNNs, and transformers
 - **No Prerequisites**: Start from fundamentals, no ML background required
 - **100% Free**: Open-source and free forever
 
-## Curriculum Topics
+## Documentation Topics
 
 1. **Foundations**: Linear algebra, calculus, probability for ML
 2. **Neural Networks**: Perceptrons, activation functions, forward propagation
@@ -37,12 +37,12 @@ Code Canvas is an educational platform that teaches machine learning from the gr
 
 ## Links
 
-- Website: https://codecanvas.dev
-- Curriculum: https://codecanvas.dev/curriculum
-- Projects: https://codecanvas.dev/projects
-- Community: https://codecanvas.dev/community
-- GitHub: https://github.com/codecanvas
-
+- Website: https://MLCodex.dev
+- Docs: https://MLCodex.dev/docs
+- Projects: https://MLCodex.dev/projects
+- Community: https://MLCodex.dev/community
+- GitHub: https://github.com/MLCodex
+N
 ## Contact
 
 For questions or collaboration, reach out through our community page or GitHub discussions.

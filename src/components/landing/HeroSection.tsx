@@ -30,7 +30,7 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
-            <Link to="/curriculum">
+            <Link to="/docs">
               <Button variant="hero" size="lg" className="h-14 px-8 text-base">
                 Start Learning Free
                 <ArrowRight className="w-5 h-5" />

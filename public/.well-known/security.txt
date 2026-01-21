@@ -2,6 +2,6 @@
 # Security contact file for responsible disclosure
 # https://securitytxt.org/
 
-Contact: mailto:security@codecanvas.dev
+Contact: mailto:security@MLCodex.dev
 Preferred-Languages: en
-Canonical: https://codecanvas.dev/.well-known/security.txt
+Canonical: https://MLCodex.dev/.well-known/security.txt

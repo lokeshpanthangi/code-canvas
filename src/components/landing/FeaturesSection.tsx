@@ -17,7 +17,7 @@ const FeaturesSection = () => {
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            Our curriculum is designed by ML engineers who believe understanding trumps abstraction. 
+            Our content is designed by ML engineers who believe understanding trumps abstraction. 
             Build real implementations, not just copy-paste examples.
           </p>
         </div>

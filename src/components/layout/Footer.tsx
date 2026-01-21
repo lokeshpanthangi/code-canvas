@@ -6,7 +6,7 @@ const Footer = () => {
 
   const footerLinks = {
     learn: [
-      { label: 'Curriculum', href: '/curriculum', internal: true },
+      { label: 'Docs', href: '/docs', internal: true },
       { label: 'Projects', href: '#' },
       { label: 'Tutorials', href: '#' },
       { label: 'Examples', href: '#' },
@@ -39,7 +39,7 @@ const Footer = () => {
                 <Brain className="w-5 h-5 text-foreground" />
               </div>
               <span className="text-xl font-semibold tracking-tight">
-                <span className="text-foreground">MLEdu</span>
+                <span className="text-foreground">MLCodex</span>
                 <span className="text-muted-foreground font-normal">Docs</span>
               </span>
             </Link>
@@ -103,7 +103,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-border/30">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} MLEdu. Built with passion for developers.
+            © {currentYear} MLCodex. Built with passion for developers.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">Privacy</a>

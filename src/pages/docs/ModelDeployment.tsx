@@ -1,0 +1,305 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import { 
+  ArrowLeft,
+  ArrowRight,
+  Clock,
+  Cloud,
+  Globe,
+  Play,
+  Layers,
+  Settings,
+  Terminal,
+  LucideIcon
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+interface Doc {
+  id: string;
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  estimatedTime: string;
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  tags: string[];
+  comingSoon?: boolean;
+}
+
+const docs: Doc[] = [
+  {
+    id: 'aws-deployment',
+    title: 'Deploy on AWS',
+    description: 'Deploy ML models on Amazon Web Services using SageMaker, Lambda, and EC2. Learn about auto-scaling and cost optimization.',
+    icon: Cloud,
+    estimatedTime: '60 min',
+    difficulty: 'intermediate',
+    tags: ['AWS', 'SageMaker', 'Lambda', 'EC2'],
+  },
+  {
+    id: 'gcp-deployment',
+    title: 'Deploy on GCP',
+    description: 'Use Google Cloud Platform services like Vertex AI, Cloud Run, and Cloud Functions to serve your ML models at scale.',
+    icon: Globe,
+    estimatedTime: '60 min',
+    difficulty: 'intermediate',
+    tags: ['GCP', 'Vertex AI', 'Cloud Run'],
+  },
+  {
+    id: 'docker-containerization',
+    title: 'Docker Containerization',
+    description: 'Package your ML application into Docker containers for consistent deployment across any environment.',
+    icon: Layers,
+    estimatedTime: '35 min',
+    difficulty: 'intermediate',
+    tags: ['Docker', 'Containers', 'DevOps'],
+    comingSoon: true,
+  },
+  {
+    id: 'kubernetes-orchestration',
+    title: 'Kubernetes Orchestration',
+    description: 'Scale your ML deployments with Kubernetes. Learn about pods, services, and horizontal pod autoscaling.',
+    icon: Settings,
+    estimatedTime: '50 min',
+    difficulty: 'advanced',
+    tags: ['Kubernetes', 'K8s', 'Orchestration'],
+    comingSoon: true,
+  },
+];
+
+const difficultyConfig = {
+  beginner: { 
+    label: 'Beginner', 
+    bgClass: 'bg-emerald-500/10',
+    textClass: 'text-emerald-400',
+    borderClass: 'border-emerald-500/20',
+  },
+  intermediate: { 
+    label: 'Intermediate', 
+    bgClass: 'bg-amber-500/10',
+    textClass: 'text-amber-400',
+    borderClass: 'border-amber-500/20',
+  },
+  advanced: { 
+    label: 'Advanced', 
+    bgClass: 'bg-purple-500/10',
+    textClass: 'text-purple-400',
+    borderClass: 'border-purple-500/20',
+  },
+};
+
+const DocCard = ({ doc, index }: { doc: Doc; index: number }) => {
+  const Icon = doc.icon;
+  const config = difficultyConfig[doc.difficulty];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+    >
+      <Link 
+        to={doc.comingSoon ? '#' : `/docs/model-deployment/${doc.id}`}
+        className={doc.comingSoon ? 'cursor-not-allowed' : ''}
+      >
+        <div className={`group relative h-full rounded-2xl bg-card/50 border border-border overflow-hidden transition-all duration-300 ${
+          doc.comingSoon 
+            ? 'opacity-60' 
+            : 'cursor-pointer hover:border-foreground/20 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-1'
+        }`}>
+          <div className="p-6">
+            {/* Header */}
+            <div className="flex items-start justify-between mb-4">
+              <div className={`w-12 h-12 rounded-xl bg-foreground/5 border border-foreground/10 flex items-center justify-center ${
+                !doc.comingSoon ? 'group-hover:bg-teal-500/10 group-hover:border-teal-500/20' : ''
+              } transition-colors duration-300`}>
+                <Icon className={`w-6 h-6 text-muted-foreground ${
+                  !doc.comingSoon ? 'group-hover:text-teal-400' : ''
+                } transition-colors duration-300`} />
+              </div>
+              {doc.comingSoon && (
+                <span className="text-[10px] px-2 py-1 rounded-full bg-foreground/5 text-foreground/50 border border-foreground/10 font-medium uppercase tracking-wider">
+                  Coming Soon
+                </span>
+              )}
+            </div>
+
+            {/* Title & Description */}
+            <h3 className={`text-lg font-semibold text-foreground mb-2 ${
+              !doc.comingSoon ? 'group-hover:text-teal-400' : ''
+            } transition-colors duration-300`}>
+              {doc.title}
+            </h3>
+            <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+              {doc.description}
+            </p>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-1.5 mb-4">
+              {doc.tags.slice(0, 3).map((tag) => (
+                <span 
+                  key={tag}
+                  className="text-[10px] px-2 py-0.5 rounded-md bg-foreground/5 text-foreground/60 border border-foreground/10"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Footer */}
+            <div className="flex items-center justify-between pt-4 border-t border-border/50">
+              <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                <Clock className="w-4 h-4" />
+                <span>{doc.estimatedTime}</span>
+              </div>
+              {!doc.comingSoon && (
+                <div className="flex items-center gap-1 text-sm font-medium text-muted-foreground group-hover:text-teal-400 transition-colors duration-300">
+                  <span>Read</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+};
+
+const ModelDeployment = () => {
+  const completedDocs = 0; // This would come from user state
+  const totalDocs = docs.filter(d => !d.comingSoon).length;
+  const progressPercent = (completedDocs / totalDocs) * 100;
+
+  return (
+    <div className="min-h-screen bg-background relative">
+      <div className="noise-overlay" />
+      <Navbar />
+      
+      <main className="pt-24 lg:pt-32 pb-20">
+        <div className="container mx-auto px-6">
+          {/* Back Link */}
+          <Link 
+            to="/docs" 
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Back to Docs</span>
+          </Link>
+
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-12"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-[10px] px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 font-medium uppercase tracking-wider">
+                Advanced
+              </span>
+            </div>
+
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Model Deployment
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6 max-w-3xl">
+              Take your ML models from notebook to production. Learn industry-standard deployment patterns, 
+              cloud platforms, API design, and MLOps best practices.
+            </p>
+
+            {/* Stats */}
+            <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+              <span>{docs.length} Docs</span>
+              <span>~3.5 hours total</span>
+              <span>{completedDocs}/{totalDocs} completed</span>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="mt-6 max-w-md">
+              <div className="h-2 bg-foreground/5 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full transition-all duration-500"
+                  style={{ width: `${progressPercent}%` }}
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Batch Deployment Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="mb-12"
+          >
+            <h2 className="text-2xl font-bold text-foreground mb-2">Batch Deployment</h2>
+            <p className="text-muted-foreground mb-6">Deploy pre-trained models for batch inference and scheduled predictions</p>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {docs.filter(d => d.id === 'aws-deployment' || d.id === 'gcp-deployment').map((doc, index) => (
+                <DocCard key={doc.id} doc={doc} index={index} />
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Online Training Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mb-12"
+          >
+            <h2 className="text-2xl font-bold text-foreground mb-2">Online Training</h2>
+            <p className="text-muted-foreground mb-6">Deploy models that learn continuously from real-time data streams</p>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {docs.filter(d => d.id === 'aws-deployment' || d.id === 'gcp-deployment').map((doc, index) => (
+                <DocCard key={`online-${doc.id}`} doc={doc} index={index} />
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Bottom CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mt-20"
+          >
+            <div className="rounded-2xl bg-card/50 border border-border p-8 text-center">
+              <Terminal className="w-12 h-12 text-teal-400 mx-auto mb-4" />
+              <h3 className="text-2xl font-bold text-foreground mb-2">Ready to Deploy?</h3>
+              <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
+                Start with any doc that interests you, or follow our recommended learning path for a structured experience.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <Link to="/docs/model-deployment/aws-deployment">
+                  <Button className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white">
+                    <Play className="w-4 h-4 mr-2" />
+                    Start First Doc
+                  </Button>
+                </Link>
+                <Link to="/projects">
+                  <Button variant="outline" className="border-foreground/10 hover:bg-foreground/5">
+                    View Related Projects
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="mt-24">
+          <Footer />
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default ModelDeployment;

@@ -4,7 +4,7 @@ import { Home, ArrowLeft } from "lucide-react";
 
 const NotFound = () => {
   useEffect(() => {
-    document.title = "404 - Page Not Found | MLEdu";
+    document.title = "404 - Page Not Found | MLCodex";
   }, []);
 
   return (

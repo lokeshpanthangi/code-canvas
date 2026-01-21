@@ -19,7 +19,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
 
   const navLinks = [
     { path: '/', label: 'Home' },
-    { path: '/curriculum', label: 'Curriculum' },
+    { path: '/docs', label: 'Documentation' },
     { path: '/projects', label: 'Projects' },
     { path: '/community', label: 'Community' },
   ];
@@ -61,7 +61,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      navigate(`/curriculum?search=${encodeURIComponent(searchQuery.trim())}`);
+      navigate(`/docs?search=${encodeURIComponent(searchQuery.trim())}`);
       setIsSearchOpen(false);
       setSearchQuery('');
     }
@@ -83,7 +83,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
                 <Brain className={`w-4 h-4 ${theme === 'dark' ? 'text-white' : 'text-teal-600'}`} />
               </div>
               <div className="flex items-baseline gap-0.5">
-                <span className="text-base font-semibold tracking-tight text-foreground">MLEdu</span>
+                <span className="text-base font-semibold tracking-tight text-foreground">MLCodex</span>
                 <span className="text-xs text-muted-foreground/70 font-medium">.dev</span>
               </div>
             </Link>
@@ -189,7 +189,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
                   </div>
                 </div>
                 <div className="flex items-baseline gap-0.5">
-                  <span className="text-base font-semibold tracking-tight text-foreground">MLEdu</span>
+                  <span className="text-base font-semibold tracking-tight text-foreground">MLCodex</span>
                   <span className="text-xs text-muted-foreground/70 font-medium">.dev</span>
                 </div>
               </Link>
@@ -267,7 +267,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
                 </div>
 
                 {/* CTA Button */}
-                <Link to="/curriculum" className="hidden sm:block">
+                <Link to="/docs" className="hidden sm:block">
                   <button className={`flex items-center gap-1.5 px-4 py-1.5 rounded-xl text-sm font-medium transition-all duration-300 ${
                     theme === 'dark'
                       ? 'bg-white text-black hover:bg-white/90'
@@ -307,7 +307,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
                     </Link>
                   ))}
                   <Link
-                    to="/curriculum"
+                    to="/docs"
                     onClick={() => setIsMenuOpen(false)}
                     className={`mt-2 flex items-center justify-center gap-2 px-3 py-2.5 text-sm font-medium rounded-xl transition-all ${
                       theme === 'dark'
@@ -367,7 +367,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
                   <button
                     key={term}
                     onClick={() => {
-                      navigate(`/curriculum?search=${encodeURIComponent(term)}`);
+                      navigate(`/docs?search=${encodeURIComponent(term)}`);
                       setIsSearchOpen(false);
                       setSearchQuery('');
                     }}

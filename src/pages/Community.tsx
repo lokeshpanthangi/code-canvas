@@ -313,7 +313,7 @@ const Community = () => {
               <p className="text-sm text-muted-foreground mb-4">
                 Follow for ML tips, community highlights, and new content announcements.
               </p>
-              <span className="text-xs text-muted-foreground">@MLEduDev • 12k followers</span>
+              <span className="text-xs text-muted-foreground">@MLCodex • 12k followers</span>
             </a>
 
             {/* YouTube */}
