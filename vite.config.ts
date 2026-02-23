@@ -8,6 +8,15 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
     proxy: {
+      // Proxy OpenAI requests to avoid browser CORS restrictions
+      '/api/openai': {
+        target: 'https://api.openai.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/openai/, ''),
+        configure: (proxy) => {
+          proxy.on('error', (err) => console.error('[openai proxy error]', err));
+        },
+      },
       '/api/onecompiler': {
         target: 'https://onecompiler.com',
         changeOrigin: true,

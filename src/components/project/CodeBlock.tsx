@@ -197,25 +197,15 @@ interface OutputBlockProps {
 }
 
 export const OutputBlock = ({ output, title = 'Output' }: OutputBlockProps) => {
-  const { theme } = useTheme();
-  
   return (
-    <div className={`rounded-xl border overflow-hidden my-6 ${
-      theme === 'dark' 
-        ? 'bg-emerald-950/30 border-emerald-500/20' 
-        : 'bg-emerald-50 border-emerald-200'
-    }`}>
-      <div className={`flex items-center gap-2 px-4 py-2 border-b ${
-        theme === 'dark' ? 'border-emerald-500/20 bg-emerald-950/50' : 'border-emerald-200 bg-emerald-100/50'
-      }`}>
+    <div className="rounded-xl border overflow-hidden my-6 bg-background border-emerald-500/30">
+      <div className="flex items-center gap-2 px-4 py-2 border-b border-emerald-500/30 bg-background">
         <Play className="w-4 h-4 text-emerald-500" />
-        <span className={`text-xs font-medium ${theme === 'dark' ? 'text-emerald-400' : 'text-emerald-700'}`}>
+        <span className="text-xs font-medium text-emerald-400">
           {title}
         </span>
       </div>
-      <pre className={`p-4 text-sm font-mono overflow-x-auto ${
-        theme === 'dark' ? 'text-emerald-300' : 'text-emerald-800'
-      }`}>
+      <pre className="p-4 text-sm font-mono overflow-x-auto text-emerald-400 bg-background">
         {output}
       </pre>
     </div>

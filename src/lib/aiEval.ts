@@ -110,6 +110,9 @@ function buildChain() {
     model: config.openai.model,
     temperature: 0.3,
     apiKey: config.openai.apiKey,
+    configuration: {
+      baseURL: config.openai.baseUrl,
+    },
   });
 
   const structuredModel = model.withStructuredOutput(evalResultSchema, {
@@ -151,6 +154,9 @@ export async function evaluateCodeStream(
     temperature: 0.3,
     apiKey: config.openai.apiKey,
     streaming: true,
+    configuration: {
+      baseURL: config.openai.baseUrl,
+    },
   });
 
   const prompt = ChatPromptTemplate.fromMessages([
