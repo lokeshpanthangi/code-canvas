@@ -316,9 +316,9 @@ Real, modular examples using LangChain + OpenAI.
                   <CodeBlock
                     filename="prompts.py"
                     code={`SYSTEM_PROMPT = (
-+    "You are a concise programming tutor. "
-+    "Answer in 3-5 bullets, use simple words, no filler."
-+)`}
+    "You are a concise programming tutor. "
+    "Answer in 3-5 bullets, use simple words, no filler."
+)`}
                   />
                 </div>
 
@@ -330,9 +330,9 @@ Real, modular examples using LangChain + OpenAI.
                   <CodeBlock
                     filename="prompts.py"
                     code={`FEW_SHOT = [
-+    {"input": "Explain a loop", "output": "A loop repeats work. Example: for i in range(3): ..."},
-+    {"input": "Explain a list", "output": "A list stores items in order. Example: [1, 2, 3]"},
-+]`}
+    {"input": "Explain a loop", "output": "A loop repeats work. Example: for i in range(3): ..."},
+    {"input": "Explain a list", "output": "A list stores items in order. Example: [1, 2, 3]"},
+]`}
                   />
                 </div>
 
@@ -344,9 +344,9 @@ Real, modular examples using LangChain + OpenAI.
                   <CodeBlock
                     filename="prompts.py"
                     code={`OUTPUT_TEMPLATE = (
-+    "Return JSON with keys: title, bullets (array). "
-+    "No extra keys."
-+)`}
+    "Return JSON with keys: title, bullets (array). "
+    "No extra keys."
+)`}
                   />
                 </div>
               </section>
@@ -412,21 +412,21 @@ pip install langchain langchain-openai python-dotenv`}
                   <CodeBlock
                     filename="run.py"
                     code={`from langchain_openai import ChatOpenAI
-+from langchain_core.prompts import ChatPromptTemplate
-+from langchain_core.output_parsers import StrOutputParser
-+from config import MODEL_NAME
-+from prompts import SYSTEM_PROMPT, OUTPUT_TEMPLATE
-+
-+llm = ChatOpenAI(model=MODEL_NAME, temperature=0.2)
-+
-+prompt = ChatPromptTemplate.from_messages([
-+    ("system", SYSTEM_PROMPT),
-+    ("human", OUTPUT_TEMPLATE + "\nQuestion: {question}"),
-+])
-+
-+chain = prompt | llm | StrOutputParser()
-+
-+print(chain.invoke({"question": "Explain recursion"}))`}
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from config import MODEL_NAME
+from prompts import SYSTEM_PROMPT, OUTPUT_TEMPLATE
+
+llm = ChatOpenAI(model=MODEL_NAME, temperature=0.2)
+
+prompt = ChatPromptTemplate.from_messages([
+    ("system", SYSTEM_PROMPT),
+    ("human", OUTPUT_TEMPLATE + "\nQuestion: {question}"),
+])
+
+chain = prompt | llm | StrOutputParser()
+
+print(chain.invoke({"question": "Explain recursion"}))`}
                   />
 
                   <OutputBlock
@@ -440,13 +440,13 @@ pip install langchain langchain-openai python-dotenv`}
                   <CodeBlock
                     filename="run.py"
                     code={`def validate_json_like(text: str) -> bool:
-+    return text.strip().startswith("{") and text.strip().endswith("}")
-+
-+result = chain.invoke({"question": "Explain a stack"})
-+if not validate_json_like(result):
-+    raise ValueError("Output not in JSON format")
-+
-+print(result)`}
+            return text.strip().startswith("{") and text.strip().endswith("}")
+
+          result = chain.invoke({"question": "Explain a stack"})
+          if not validate_json_like(result):
+            raise ValueError("Output not in JSON format")
+
+          print(result)`}
                   />
 
                   <Callout type="tip">
@@ -473,40 +473,40 @@ pip install langchain langchain-openai python-dotenv`}
                 <CodeBlock
                   filename="prompt_patterns.py"
                   code={`"""Prompt Engineering Patterns"""
-+
-+import os
-+from dotenv import load_dotenv
-+from langchain_openai import ChatOpenAI
-+from langchain_core.prompts import ChatPromptTemplate
-+from langchain_core.output_parsers import StrOutputParser
-+
-+load_dotenv()
-+if not os.getenv("OPENAI_API_KEY"):
-+    raise ValueError("OPENAI_API_KEY not set in .env")
-+
-+SYSTEM_PROMPT = (
-+    "You are a concise programming tutor. "
-+    "Answer in 3-5 bullets, use simple words, no filler."
-+)
-+
-+OUTPUT_TEMPLATE = (
-+    "Return JSON with keys: title, bullets (array). "
-+    "No extra keys."
-+)
-+
-+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.2)
-+prompt = ChatPromptTemplate.from_messages([
-+    ("system", SYSTEM_PROMPT),
-+    ("human", OUTPUT_TEMPLATE + "\nQuestion: {question}"),
-+])
-+
-+chain = prompt | llm | StrOutputParser()
-+result = chain.invoke({"question": "Explain recursion"})
-+
-+if not (result.strip().startswith("{") and result.strip().endswith("}")):
-+    raise ValueError("Output not in JSON format")
-+
-+print(result)`}
+
+        import os
+        from dotenv import load_dotenv
+        from langchain_openai import ChatOpenAI
+        from langchain_core.prompts import ChatPromptTemplate
+        from langchain_core.output_parsers import StrOutputParser
+
+        load_dotenv()
+        if not os.getenv("OPENAI_API_KEY"):
+          raise ValueError("OPENAI_API_KEY not set in .env")
+
+        SYSTEM_PROMPT = (
+          "You are a concise programming tutor. "
+          "Answer in 3-5 bullets, use simple words, no filler."
+        )
+
+        OUTPUT_TEMPLATE = (
+          "Return JSON with keys: title, bullets (array). "
+          "No extra keys."
+        )
+
+        llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.2)
+        prompt = ChatPromptTemplate.from_messages([
+          ("system", SYSTEM_PROMPT),
+          ("human", OUTPUT_TEMPLATE + "\nQuestion: {question}"),
+        ])
+
+        chain = prompt | llm | StrOutputParser()
+        result = chain.invoke({"question": "Explain recursion"})
+
+        if not (result.strip().startswith("{") and result.strip().endswith("}")):
+          raise ValueError("Output not in JSON format")
+
+        print(result)`}
                 />
               </section>
 
