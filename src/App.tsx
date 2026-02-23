@@ -16,6 +16,10 @@ import BatchDeploymentAWS from "./pages/docs/BatchDeploymentAWS";
 import BatchDeploymentGCP from "./pages/docs/BatchDeploymentGCP";
 import OnlineDeploymentAWS from "./pages/docs/OnlineDeploymentAWS";
 import OnlineDeploymentGCP from "./pages/docs/OnlineDeploymentGCP";
+import BasicChatbot from "./pages/docs/BasicChatbot";
+import BasicRAG from "./pages/docs/BasicRAG";
+import Assignments from "./pages/Assignments";
+import BasicRAGAssignment from "./pages/assignments/BasicRAGAssignment";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -44,6 +48,8 @@ const App = () => (
             <Route path="/docs" element={<Docs />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/community" element={<Community />} />
+            <Route path="/assignments" element={<Assignments />} />
+            <Route path="/assignments/basic-rag" element={<BasicRAGAssignment />} />
             <Route path="/projects/neural-network" element={<NeuralNetworkProject />} />
             <Route path="/docs/model-deployment" element={<ModelDeployment />} />
             <Route path="/docs/linear-regression" element={<LinearRegressionModule />} />
@@ -51,6 +57,8 @@ const App = () => (
             <Route path="/docs/batchdeployment/gcp" element={<BatchDeploymentGCP />} />
             <Route path="/docs/onlinedeployment/aws" element={<OnlineDeploymentAWS />} />
             <Route path="/docs/onlinedeployment/gcp" element={<OnlineDeploymentGCP />} />
+            <Route path="/docs/basic-chatbot" element={<BasicChatbot />} />
+            <Route path="/docs/basic-rag" element={<BasicRAG />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

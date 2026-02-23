@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/api/onecompiler",
+      "destination": "https://onecompiler.com/api/v1/run"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

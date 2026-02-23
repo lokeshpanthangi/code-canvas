@@ -21,6 +21,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
     { path: '/', label: 'Home' },
     { path: '/docs', label: 'Documentation' },
     { path: '/projects', label: 'Projects' },
+    { path: '/assignments', label: 'Assignments' },
     { path: '/community', label: 'Community' },
   ];
 
