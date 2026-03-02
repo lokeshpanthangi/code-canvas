@@ -1,12 +1,12 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-
+import tailwindcss from "@tailwindcss/vite";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
-    port: 8080,
+    port: 3000,
     proxy: {
       // Proxy OpenAI requests to avoid browser CORS restrictions
       '/api/openai': {
@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
-  plugins: [react()].filter(Boolean),
+  plugins: [react(), tailwindcss()].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

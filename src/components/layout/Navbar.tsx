@@ -174,7 +174,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
         <nav className={`mx-auto transition-all duration-500 ease-out ${
           isScrolled 
             ? 'max-w-full bg-card/90 backdrop-blur-xl border-b border-border shadow-lg shadow-background/10 rounded-none' 
-            : 'max-w-5xl bg-card/40 backdrop-blur-md border border-border/50 rounded-2xl'
+            : 'max-w-6xl bg-card/40 backdrop-blur-md border border-border/50 rounded-2xl'
         }`}>
           <div className="px-4 lg:px-6">
             <div className="flex items-center justify-between h-14">
