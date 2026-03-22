@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useGitHubStats } from '@/hooks/useGitHubStats';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -44,6 +45,7 @@ const BasicChatbot = () => {
   const [progress, setProgress] = useState<string[]>([]);
   const [isDownloading, setIsDownloading] = useState(false);
   const contentRef = useRef<HTMLElement>(null);
+  const { stars, forks, contributors } = useGitHubStats();
 
   // Download function
   const handleDownloadPDF = async () => {
@@ -206,7 +208,7 @@ Build a Basic Chatbot
                   <div className="text-sm font-medium text-foreground mb-3">Quick Actions</div>
                   <div className="space-y-2">
                     <a
-                      href="https://github.com"
+                      href="https://github.com/lokeshpanthangi/MLCodex"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
@@ -253,15 +255,15 @@ Build a Basic Chatbot
                   </div>
                   <div className="flex items-center gap-1.5">
                     <Star className="w-4 h-4" />
-                    <span>1,204 stars</span>
+                    <span>{stars.toLocaleString()} stars</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <GitFork className="w-4 h-4" />
-                    <span>438 forks</span>
+                    <span>{forks.toLocaleString()} forks</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <Users className="w-4 h-4" />
-                    <span>89 contributors</span>
+                    <span>{contributors.toLocaleString()} contributors</span>
                   </div>
                   <span className="px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-400 border border-emerald-400/20 text-xs font-medium">
                     Beginner
@@ -1088,7 +1090,7 @@ Goodbye! 👋`}
                   Back to Docs
                 </Link>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/lokeshpanthangi/MLCodex"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"

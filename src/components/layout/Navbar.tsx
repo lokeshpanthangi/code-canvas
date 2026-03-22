@@ -73,7 +73,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
     return (
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
         <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between h-14">
+          <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2.5 group">
               <div className={`w-8 h-8 rounded-xl flex items-center justify-center transition-all duration-300 ${
@@ -121,7 +121,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
 
               {/* GitHub */}
               <a
-                href="https://github.com"
+                href="https://github.com/lokeshpanthangi/MLCodex"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-colors"
@@ -177,7 +177,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
             : 'max-w-5xl bg-card/40 backdrop-blur-md border border-border/50 rounded-2xl'
         }`}>
           <div className="px-4 lg:px-6">
-            <div className="flex items-center justify-between h-14">
+            <div className="flex items-center justify-between h-16">
               {/* Logo */}
               <Link to="/" className="flex items-center gap-2.5 group">
                 <div className="relative">
@@ -243,7 +243,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
                 {/* Icon Buttons */}
                 <div className="flex items-center gap-1">
                   <a
-                    href="https://github.com"
+                    href="https://github.com/lokeshpanthangi/MLCodex"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 rounded-xl text-muted-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"

@@ -1,8 +1,11 @@
-import { ArrowRight, Zap, Github, Star, BookOpen, Users, Rocket } from 'lucide-react';
+import { ArrowRight, Zap, Github, Star, BookOpen, Rocket } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useGitHubStats } from '@/hooks/useGitHubStats';
 
 const CTASection = () => {
+  const { stars } = useGitHubStats();
+
   return (
     <section className="py-32 relative">
       <div className="container mx-auto px-6 relative z-10">
@@ -12,7 +15,7 @@ const CTASection = () => {
             {/* Top row - Stats/Trust */}
             <div className="flex flex-wrap items-center gap-6 mb-12 pb-8 border-b border-border/30">
               <a 
-                href="https://github.com" 
+                href="https://github.com/lokeshpanthangi/MLCodex" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-foreground/5 border border-foreground/10 hover:bg-foreground/10 hover:border-foreground/20 transition-colors"
@@ -21,14 +24,14 @@ const CTASection = () => {
                 <span className="font-medium">Star on GitHub</span>
                 <div className="flex items-center gap-1 pl-3 border-l border-foreground/10">
                   <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
-                  <span className="text-sm">2.8k</span>
+                  <span className="text-sm">{stars}</span>
                 </div>
               </a>
               
               <div className="flex items-center gap-8 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4" />
-                  <span>15k+ Learners</span>
+                  <BookOpen className="w-4 h-4" />
+                  <span>Open Source</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <BookOpen className="w-4 h-4" />

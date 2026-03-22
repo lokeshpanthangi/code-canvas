@@ -83,13 +83,13 @@ const HeroSection = () => {
                       </div>
                     ))}
                     <div className="w-8 h-8 rounded-full bg-foreground/10 border-2 border-background flex items-center justify-center text-xs text-muted-foreground">
-                      +2k
+                      +
                     </div>
                   </div>
                 </div>
                 <h3 className="font-semibold text-foreground mb-1">Join the Community</h3>
                 <p className="text-sm text-muted-foreground">
-                  Learn together with 10k+ developers
+                  Learn together with other developers
                 </p>
               </div>
             </div>

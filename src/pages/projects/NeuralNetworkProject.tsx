@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import { useGitHubStats } from '@/hooks/useGitHubStats';
 import { CodeBlock, Callout, OutputBlock, InlineCode } from '@/components/project/CodeBlock';
 import { 
   ChevronRight, 
@@ -46,6 +47,7 @@ const NeuralNetworkProject = () => {
   const [progress, setProgress] = useState<string[]>([]);
   const [isDownloading, setIsDownloading] = useState(false);
   const contentRef = useRef<HTMLElement>(null);
+  const { stars, forks, contributors } = useGitHubStats();
 
   // Download PDF function
   const handleDownloadPDF = async () => {
@@ -397,7 +399,7 @@ Neural Network from Scratch Project
                   <div className="text-sm font-medium text-foreground mb-3">Quick Actions</div>
                   <div className="space-y-2">
                     <a 
-                      href="https://github.com" 
+                      href="https://github.com/lokeshpanthangi/MLCodex" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
@@ -444,15 +446,15 @@ Neural Network from Scratch Project
                   </div>
                   <div className="flex items-center gap-1.5">
                     <Star className="w-4 h-4" />
-                    <span>2,847 stars</span>
+                    <span>{stars} stars</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <GitFork className="w-4 h-4" />
-                    <span>892 forks</span>
+                    <span>{forks} forks</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <Users className="w-4 h-4" />
-                    <span>156 contributors</span>
+                    <span>{contributors} contributors</span>
                   </div>
                   <span className="px-2.5 py-1 rounded-full bg-amber-400/10 text-amber-400 border border-amber-400/20 text-xs font-medium">
                     Intermediate
@@ -1289,7 +1291,7 @@ plot_decision_boundary(network, X, y)`}
                   Back to Projects
                 </Link>
                 <a 
-                  href="https://github.com" 
+                  href="https://github.com/lokeshpanthangi/MLCodex" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"

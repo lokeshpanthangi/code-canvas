@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
+import XIcon from '@/components/ui/XIcon';
+import { useGitHubStats } from '@/hooks/useGitHubStats';
 import {
   Users,
   MessageSquare,
@@ -16,13 +17,10 @@ import {
   ExternalLink,
   Sparkles,
   Quote,
-  Rocket,
-  Zap,
-  Globe,
   Play,
   Coffee,
-  Twitter,
 } from 'lucide-react';
+import { useState } from 'react';
 
 // Discord icon component
 const DiscordIcon = ({ className }: { className?: string }) => (
@@ -31,24 +29,7 @@ const DiscordIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// Activity types for the live feed
-interface Activity {
-  id: number;
-  type: 'join' | 'star' | 'complete' | 'discuss' | 'contribute';
-  user: string;
-  action: string;
-  time: string;
-}
-
-const liveActivities: Activity[] = [
-  { id: 1, type: 'join', user: 'alex_ml', action: 'joined the community', time: 'just now' },
-  { id: 2, type: 'complete', user: 'sarah_dev', action: 'completed Neural Networks module', time: '2m ago' },
-  { id: 3, type: 'star', user: 'priya_k', action: 'starred the repository', time: '5m ago' },
-  { id: 4, type: 'discuss', user: 'marcus_j', action: 'started a discussion on CNNs', time: '8m ago' },
-  { id: 5, type: 'contribute', user: 'emma_w', action: 'opened a pull request', time: '12m ago' },
-  { id: 6, type: 'join', user: 'david_ml', action: 'joined the community', time: '15m ago' },
-  { id: 7, type: 'complete', user: 'lisa_ai', action: 'completed Backpropagation module', time: '18m ago' },
-];
+const GITHUB_REPO_URL = 'https://github.com/lokeshpanthangi/MLCodex';
 
 const showcaseProjects = [
   {
@@ -56,7 +37,6 @@ const showcaseProjects = [
     title: 'Handwritten Digit Classifier',
     author: 'Sarah Chen',
     description: 'Built a CNN from scratch that achieves 98.5% accuracy on MNIST',
-    stars: 234,
     image: 'neural',
     tags: ['CNN', 'MNIST', 'NumPy'],
   },
@@ -65,7 +45,6 @@ const showcaseProjects = [
     title: 'Sentiment Analysis Engine',
     author: 'Alex Rivera',
     description: 'LSTM-based model for analyzing movie review sentiments',
-    stars: 189,
     image: 'nlp',
     tags: ['LSTM', 'NLP', 'Text'],
   },
@@ -74,7 +53,6 @@ const showcaseProjects = [
     title: 'Mini GPT Implementation',
     author: 'Priya Sharma',
     description: 'A minimal transformer implementation following the GPT architecture',
-    stars: 412,
     image: 'transformer',
     tags: ['Transformer', 'LLM', 'Attention'],
   },
@@ -104,45 +82,9 @@ const testimonials = [
   },
 ];
 
-const contributorAvatars = [
-  'SC', 'AR', 'PS', 'MJ', 'EW', 'DK', 'LT', 'JW', 'NK', 'RB',
-  'AM', 'CP', 'SH', 'TL', 'VG', 'WC', 'XY', 'ZA', 'BM', 'FN',
-  'GK', 'HJ', 'IO', 'JP', 'KL', 'MN', 'OP', 'QR', 'ST', 'UV',
-];
-
 const Community = () => {
-  const [currentActivity, setCurrentActivity] = useState(0);
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-
-  // Rotate through activities
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentActivity((prev) => (prev + 1) % liveActivities.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const getActivityIcon = (type: string) => {
-    switch (type) {
-      case 'join': return <Users className="w-3.5 h-3.5" />;
-      case 'star': return <Star className="w-3.5 h-3.5" />;
-      case 'complete': return <Rocket className="w-3.5 h-3.5" />;
-      case 'discuss': return <MessageSquare className="w-3.5 h-3.5" />;
-      case 'contribute': return <GitFork className="w-3.5 h-3.5" />;
-      default: return <Zap className="w-3.5 h-3.5" />;
-    }
-  };
-
-  const getActivityColor = (type: string) => {
-    switch (type) {
-      case 'join': return 'text-emerald-400 bg-emerald-500/10';
-      case 'star': return 'text-amber-400 bg-amber-500/10';
-      case 'complete': return 'text-purple-400 bg-purple-500/10';
-      case 'discuss': return 'text-blue-400 bg-blue-500/10';
-      case 'contribute': return 'text-rose-400 bg-rose-500/10';
-      default: return 'text-foreground/70 bg-foreground/5';
-    }
-  };
+  const { stars, forks, contributors } = useGitHubStats();
 
   return (
     <div className="min-h-screen bg-background relative">
@@ -151,27 +93,8 @@ const Community = () => {
       
       <main className="pt-24 pb-20">
         <div className="container mx-auto px-6">
-          {/* Hero Section with Live Activity */}
+          {/* Hero Section */}
           <div className="max-w-5xl mx-auto text-center mb-16">
-            {/* Live Activity Ticker */}
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-foreground/5 border border-foreground/10 mb-8">
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                <span className="text-xs text-muted-foreground">Live</span>
-              </div>
-              <div className="h-4 w-px bg-border" />
-              <div className="flex items-center gap-2 text-sm">
-                <span className={`p-1 rounded ${getActivityColor(liveActivities[currentActivity].type)}`}>
-                  {getActivityIcon(liveActivities[currentActivity].type)}
-                </span>
-                <span className="text-foreground font-medium">{liveActivities[currentActivity].user}</span>
-                <span className="text-muted-foreground">{liveActivities[currentActivity].action}</span>
-              </div>
-            </div>
-            
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
               Where ML Learners
               <br />
@@ -181,26 +104,26 @@ const Community = () => {
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-10">
-              Join 15,000+ developers learning machine learning from first principles. 
+              Join developers learning machine learning from first principles. 
               Ask questions, share projects, and grow together.
             </p>
 
             {/* Stats Row */}
             <div className="flex flex-wrap items-center justify-center gap-8 mb-10 text-sm">
               <div className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-teal-400" />
-                <span className="font-semibold text-foreground">15,000+</span>
-                <span className="text-muted-foreground">members</span>
-              </div>
-              <div className="flex items-center gap-2">
                 <Star className="w-4 h-4 text-amber-400" />
-                <span className="font-semibold text-foreground">2.8k</span>
+                <span className="font-semibold text-foreground">{stars}</span>
                 <span className="text-muted-foreground">GitHub stars</span>
               </div>
               <div className="flex items-center gap-2">
-                <Globe className="w-4 h-4 text-blue-400" />
-                <span className="font-semibold text-foreground">120+</span>
-                <span className="text-muted-foreground">countries</span>
+                <GitFork className="w-4 h-4 text-teal-400" />
+                <span className="font-semibold text-foreground">{forks}</span>
+                <span className="text-muted-foreground">forks</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Users className="w-4 h-4 text-blue-400" />
+                <span className="font-semibold text-foreground">{contributors}</span>
+                <span className="text-muted-foreground">contributors</span>
               </div>
             </div>
 
@@ -212,7 +135,7 @@ const Community = () => {
                   Join Discord
                 </Button>
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <a href={GITHUB_REPO_URL} target="_blank" rel="noopener noreferrer">
                 <Button variant="glass" size="lg" className="h-12 px-6">
                   <Github className="w-5 h-5 mr-2" />
                   Star on GitHub
@@ -237,13 +160,7 @@ const Community = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-foreground">Discord</h3>
-                    <div className="flex items-center gap-2">
-                      <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                      </span>
-                      <span className="text-sm text-emerald-400">1.2k online</span>
-                    </div>
+                    <span className="text-sm text-muted-foreground">Community hub</span>
                   </div>
                 </div>
                 
@@ -261,7 +178,7 @@ const Community = () => {
                 </div>
 
                 <div className="flex items-center gap-2 text-indigo-400 group-hover:gap-3 transition-all">
-                  <span className="text-sm font-medium">Join 8,500+ members</span>
+                  <span className="text-sm font-medium">Join our Discord</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </div>
               </a>
@@ -269,7 +186,7 @@ const Community = () => {
 
             {/* GitHub */}
             <a 
-              href="https://github.com" 
+              href={GITHUB_REPO_URL}
               target="_blank" 
               rel="noopener noreferrer"
               className="group p-6 rounded-3xl bg-card/50 border border-border hover:border-foreground/20 transition-all hover:shadow-lg"
@@ -280,7 +197,7 @@ const Community = () => {
                 </div>
                 <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-amber-500/10">
                   <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-                  <span className="text-xs text-amber-400 font-medium">2.8k</span>
+                  <span className="text-xs text-amber-400 font-medium">{stars}</span>
                 </div>
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2">GitHub</h3>
@@ -289,31 +206,30 @@ const Community = () => {
               </p>
               <div className="flex items-center gap-4 text-xs text-muted-foreground">
                 <span className="flex items-center gap-1">
-                  <GitFork className="w-3.5 h-3.5" /> 892 forks
+                  <GitFork className="w-3.5 h-3.5" /> {forks} forks
                 </span>
                 <span className="flex items-center gap-1">
-                  <Users className="w-3.5 h-3.5" /> 156 contributors
+                  <Users className="w-3.5 h-3.5" /> {contributors} contributors
                 </span>
               </div>
             </a>
 
-            {/* Twitter/X */}
+            {/* X (formerly Twitter) */}
             <a 
-              href="https://twitter.com" 
+              href="https://x.com" 
               target="_blank" 
               rel="noopener noreferrer"
               className="group p-6 rounded-3xl bg-card/50 border border-border hover:border-foreground/20 transition-all hover:shadow-lg"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="w-12 h-12 rounded-xl bg-foreground/10 flex items-center justify-center">
-                  <Twitter className="w-6 h-6 text-foreground" />
+                  <XIcon className="w-5 h-5 text-foreground" />
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">Twitter / X</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-2">X (Twitter)</h3>
               <p className="text-sm text-muted-foreground mb-4">
                 Follow for ML tips, community highlights, and new content announcements.
               </p>
-              <span className="text-xs text-muted-foreground">@MLCodex • 12k followers</span>
             </a>
 
             {/* YouTube */}
@@ -332,12 +248,11 @@ const Community = () => {
               <p className="text-sm text-muted-foreground mb-4">
                 Watch deep dives, live coding sessions, and community project showcases.
               </p>
-              <span className="text-xs text-muted-foreground">45+ videos • 8k subscribers</span>
             </a>
 
             {/* Discussions */}
             <a 
-              href="https://github.com/discussions" 
+              href={`${GITHUB_REPO_URL}/discussions`}
               target="_blank" 
               rel="noopener noreferrer"
               className="group p-6 rounded-3xl bg-card/50 border border-border hover:border-foreground/20 transition-all hover:shadow-lg"
@@ -355,7 +270,6 @@ const Community = () => {
               <p className="text-sm text-muted-foreground mb-4">
                 Long-form Q&A, RFC proposals, and deep technical conversations.
               </p>
-              <span className="text-xs text-muted-foreground">2.4k discussions</span>
             </a>
           </div>
 
@@ -398,10 +312,6 @@ const Community = () => {
                   <div className="p-5">
                     <div className="flex items-start justify-between mb-2">
                       <h3 className="font-semibold text-foreground">{project.title}</h3>
-                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-                        <span>{project.stars}</span>
-                      </div>
                     </div>
                     <p className="text-sm text-muted-foreground mb-3">{project.description}</p>
                     <div className="flex items-center justify-between">
@@ -456,40 +366,20 @@ const Community = () => {
             </div>
           </div>
 
-          {/* Contributor Wall */}
+          {/* Contributor Section */}
           <div className="mb-16">
             <div className="text-center mb-8">
               <h2 className="text-2xl lg:text-3xl font-bold tracking-tight mb-3">
-                Built by <span className="bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent">156+ Contributors</span>
+                Built by <span className="bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent">{contributors} Contributor{contributors !== 1 ? 's' : ''}</span>
               </h2>
               <p className="text-muted-foreground">
                 Thank you to everyone who has contributed to making this possible.
               </p>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
-              {contributorAvatars.map((avatar, index) => (
-                <div
-                  key={index}
-                  className="w-10 h-10 rounded-full bg-gradient-to-br from-foreground/10 to-foreground/5 border border-foreground/10 flex items-center justify-center text-xs font-medium text-foreground/50 hover:border-foreground/30 hover:text-foreground/70 transition-all cursor-pointer"
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  {avatar}
-                </div>
-              ))}
-              <a 
-                href="https://github.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-xs font-medium text-teal-400 hover:bg-teal-500/20 transition-all cursor-pointer"
-              >
-                +126
-              </a>
-            </div>
-
             <div className="text-center mt-8">
               <a 
-                href="https://github.com" 
+                href={GITHUB_REPO_URL}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"

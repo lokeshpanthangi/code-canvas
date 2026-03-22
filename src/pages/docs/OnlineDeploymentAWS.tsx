@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useGitHubStats } from '@/hooks/useGitHubStats';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -44,6 +45,7 @@ const OnlineDeploymentAWS = () => {
   const [progress, setProgress] = useState<string[]>([]);
   const [isDownloading, setIsDownloading] = useState(false);
   const contentRef = useRef<HTMLElement>(null);
+  const { stars, forks, contributors } = useGitHubStats();
 
   const handleDownloadPDF = async () => {
     setIsDownloading(true);
@@ -200,7 +202,7 @@ Online Deployment on AWS
                   <div className="text-sm font-medium text-foreground mb-3">Quick Actions</div>
                   <div className="space-y-2">
                     <a 
-                      href="https://github.com" 
+                      href="https://github.com/lokeshpanthangi/MLCodex" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
@@ -255,15 +257,15 @@ Online Deployment on AWS
                   </div>
                   <div className="flex items-center gap-1.5">
                     <Star className="w-4 h-4" />
-                    <span>1,892 stars</span>
+                    <span>{stars.toLocaleString()} stars</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <GitFork className="w-4 h-4" />
-                    <span>523 forks</span>
+                    <span>{forks.toLocaleString()} forks</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <Users className="w-4 h-4" />
-                    <span>98 contributors</span>
+                    <span>{contributors.toLocaleString()} contributors</span>
                   </div>
                   <span className="px-2.5 py-1 rounded-full bg-amber-400/10 text-amber-400 border border-amber-400/20 text-xs font-medium">
                     Intermediate
@@ -1087,7 +1089,7 @@ print(f"Monitoring: CloudWatch alarms configured")`}
                   Back to Model Deployment
                 </Link>
                 <a 
-                  href="https://github.com" 
+                  href="https://github.com/lokeshpanthangi/MLCodex" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"

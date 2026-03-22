@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import { useGitHubStats } from '@/hooks/useGitHubStats';
 import { CodeBlock, Callout, OutputBlock, InlineCode } from '@/components/project/CodeBlock';
 import {
   ChevronRight,
@@ -73,6 +74,7 @@ const SmallAgent = () => {
   const [progress, setProgress] = useState<string[]>([]);
   const [isDownloading, setIsDownloading] = useState(false);
   const contentRef = useRef<HTMLElement>(null);
+  const { stars, forks, contributors } = useGitHubStats();
 
   const handleDownloadPDF = async () => {
     setIsDownloading(true);
@@ -174,7 +176,7 @@ const SmallAgent = () => {
                 <div className="mt-6 pt-6 border-t border-border">
                   <div className="text-sm font-medium text-foreground mb-3">Quick Actions</div>
                   <div className="space-y-2">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                    <a href="https://github.com/lokeshpanthangi/MLCodex" target="_blank" rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
                       <Github className="w-4 h-4" /> View Source
                     </a>
@@ -203,9 +205,9 @@ const SmallAgent = () => {
                 </div>
                 <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-6">
                   <div className="flex items-center gap-1.5"><Clock className="w-4 h-4" /><span>3 hours</span></div>
-                  <div className="flex items-center gap-1.5"><Star className="w-4 h-4" /><span>1,140 stars</span></div>
-                  <div className="flex items-center gap-1.5"><GitFork className="w-4 h-4" /><span>390 forks</span></div>
-                  <div className="flex items-center gap-1.5"><Users className="w-4 h-4" /><span>82 contributors</span></div>
+                  <div className="flex items-center gap-1.5"><Star className="w-4 h-4" /><span>{stars} stars</span></div>
+                  <div className="flex items-center gap-1.5"><GitFork className="w-4 h-4" /><span>{forks} forks</span></div>
+                  <div className="flex items-center gap-1.5"><Users className="w-4 h-4" /><span>{contributors} contributors</span></div>
                   <span className="px-2.5 py-1 rounded-full bg-amber-400/10 text-amber-400 border border-amber-400/20 text-xs font-medium">Intermediate</span>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -1417,7 +1419,7 @@ print("\\nFinal Answer:\\n", result["output"])`} />
                 <Link to="/docs" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
                   <ArrowLeft className="w-4 h-4" /> Back to Docs
                 </Link>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                <a href="https://github.com/lokeshpanthangi/MLCodex" target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
                   Edit on GitHub <ExternalLink className="w-4 h-4" />
                 </a>

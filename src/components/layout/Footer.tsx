@@ -1,4 +1,5 @@
-import { Brain, Github, Twitter, Linkedin, ArrowUpRight } from 'lucide-react';
+import { Brain, Github, Linkedin, ArrowUpRight } from 'lucide-react';
+import XIcon from '@/components/ui/XIcon';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -14,13 +15,13 @@ const Footer = () => {
     resources: [
       { label: 'Documentation', href: '#' },
       { label: 'API Reference', href: '#' },
-      { label: 'GitHub', href: 'https://github.com', external: true },
+      { label: 'GitHub', href: 'https://github.com/lokeshpanthangi/MLCodex', external: true },
       { label: 'Changelog', href: '#' },
     ],
     community: [
       { label: 'Discord', href: '#', external: true },
       { label: 'Blog', href: '#' },
-      { label: 'Twitter', href: '#', external: true },
+      { label: 'X (Twitter)', href: 'https://x.com', external: true },
       { label: 'Newsletter', href: '#' },
     ],
   };
@@ -49,8 +50,8 @@ const Footer = () => {
             </p>
             <div className="flex gap-3">
               {[
-                { icon: Github, href: 'https://github.com' },
-                { icon: Twitter, href: 'https://twitter.com' },
+                { icon: Github, href: 'https://github.com/lokeshpanthangi/MLCodex' },
+                { icon: XIcon, href: 'https://x.com' },
                 { icon: Linkedin, href: 'https://linkedin.com' },
               ].map(({ icon: Icon, href }) => (
                 <a
