@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Brain, Search, Github, Menu, X, Sun, Moon, Command, ArrowRight, Sparkles } from 'lucide-react';
+import { Search, Github, Menu, X, Sun, Moon, Command, ArrowRight, Sparkles } from 'lucide-react';
+import MLCodexLogo from '@/components/ui/MLCodexLogo';
 import { useState, useEffect, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 
@@ -76,13 +77,7 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2.5 group">
-              <div className={`w-8 h-8 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                theme === 'dark' 
-                  ? 'bg-gradient-to-br from-white/15 to-white/5' 
-                  : 'bg-gradient-to-br from-teal-500/15 to-cyan-500/10'
-              }`}>
-                <Brain className={`w-4 h-4 ${theme === 'dark' ? 'text-white' : 'text-teal-600'}`} />
-              </div>
+              <MLCodexLogo size={26} className={theme === 'dark' ? 'text-white' : 'text-teal-600'} />
               <div className="flex items-baseline gap-0.5">
                 <span className="text-base font-semibold tracking-tight text-foreground">MLCodex</span>
                 <span className="text-xs text-muted-foreground/70 font-medium">.dev</span>
@@ -174,23 +169,15 @@ const Navbar = ({ variant = 'default' }: NavbarProps) => {
         <nav className={`mx-auto transition-all duration-500 ease-out ${
           isScrolled 
             ? 'max-w-full bg-card/90 backdrop-blur-xl border-b border-border shadow-lg shadow-background/10 rounded-none' 
-            : 'max-w-5xl bg-card/40 backdrop-blur-md border border-border/50 rounded-2xl'
+            : 'max-w-7xl bg-card/40 backdrop-blur-md border border-border/50 rounded-2xl'
         }`}>
-          <div className="px-4 lg:px-6">
-            <div className="flex items-center justify-between h-16">
+          <div className="px-5 lg:px-8">
+            <div className="flex items-center justify-between h-[72px]">
               {/* Logo */}
-              <Link to="/" className="flex items-center gap-2.5 group">
-                <div className="relative">
-                  <div className={`w-8 h-8 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                    theme === 'dark' 
-                      ? 'bg-gradient-to-br from-white/15 to-white/5 group-hover:from-white/20 group-hover:to-white/10' 
-                      : 'bg-gradient-to-br from-teal-500/15 to-cyan-500/10 group-hover:from-teal-500/25 group-hover:to-cyan-500/15'
-                  }`}>
-                    <Brain className={`w-4 h-4 transition-colors ${theme === 'dark' ? 'text-white' : 'text-teal-600'}`} />
-                  </div>
-                </div>
+              <Link to="/" className="flex items-center gap-3 group">
+                <MLCodexLogo size={30} className={`transition-colors ${theme === 'dark' ? 'text-white' : 'text-teal-600'}`} />
                 <div className="flex items-baseline gap-0.5">
-                  <span className="text-base font-semibold tracking-tight text-foreground">MLCodex</span>
+                  <span className="text-lg font-semibold tracking-tight text-foreground">MLCodex</span>
                   <span className="text-xs text-muted-foreground/70 font-medium">.dev</span>
                 </div>
               </Link>

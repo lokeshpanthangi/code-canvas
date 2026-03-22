@@ -1,4 +1,5 @@
-import { Brain, Github, Linkedin, ArrowUpRight } from 'lucide-react';
+import { Github, Linkedin, ArrowUpRight } from 'lucide-react';
+import MLCodexLogo from '@/components/ui/MLCodexLogo';
 import XIcon from '@/components/ui/XIcon';
 import { Link } from 'react-router-dom';
 
@@ -36,9 +37,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-6">
             <Link to="/" className="inline-flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-xl bg-foreground/5 flex items-center justify-center group-hover:bg-foreground/10 transition-colors">
-                <Brain className="w-5 h-5 text-foreground" />
-              </div>
+              <MLCodexLogo size={28} className="text-foreground" />
               <span className="text-xl font-semibold tracking-tight">
                 <span className="text-foreground">MLCodex</span>
                 <span className="text-muted-foreground font-normal">Docs</span>
